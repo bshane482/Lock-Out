@@ -1,0 +1,79 @@
+/* Modal Window */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-window {
+    background: #e0e0e0;
+    border: 2px solid #999;
+    box-shadow: 0 0 0 2px #555;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.modal-title-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close {
+    background: #dcdcdc;
+    border: 2px outset #999;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    color: black;
+}
+
+.modal-close:active {
+    border-style: inset;
+}
+
+.modal-content {
+    padding: 15px;
+}
+
+.modal-buttons {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* High Scores Table */
+.scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.scores-table th,
+.scores-table td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #999;
+}
+
+.scores-table th {
+    background: #c0c0c0;
+    font-weight: bold;
+}

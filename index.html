@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lock Out</title>
+
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+
+    <div id="window">
+
+        <div id="titleBar">
+            <img src="icons/lockout_icon.png" alt="Icon" width="24" height="24">
+            <span>Lock Out</span>
+        </div>
+
+        <div id="menuBar">
+            <div class="menu-item" id="gameMenu">
+                Game
+                <div class="dropdown" id="gameDropdown">
+                    <div class="dropdown-item" onclick="newGame()">New Game</div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item" onclick="showHighScores()">High Scores...</div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item" onclick="exitGame()">Exit</div>
+                </div>
+            </div>
+            <div class="menu-item" id="optionsMenu">
+                Options
+                <div class="dropdown" id="optionsDropdown">
+                    <div class="dropdown-item">
+                        Difficulty
+                        <span class="arrow"> &#9654;</span>
+                        <div class="submenu">
+                            <div class="dropdown-item" onclick="setDifficulty(1)">
+                                <span class="checkmark" id="check-beginner">&#10004;</span>
+                                Beginner
+                            </div>
+                            <div class="dropdown-item" onclick="setDifficulty(2)">
+                                <span class="checkmark" id="check-intermediate"></span>
+                                Intermediate
+                            </div>
+                            <div class="dropdown-item" onclick="setDifficulty(3)">
+                                <span class="checkmark" id="check-advanced"></span>
+                                Advanced
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item" onclick="toggleSound()">
+                        <span class="checkmark" id="check-sound">&#10004;</span>
+                        Sound
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" id="helpMenu">
+                Help
+                <div class="dropdown" id="helpDropdown">
+                    <div class="dropdown-item" onclick="showAbout()">About Lock Out...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="instructionRow">
+            <div id="instruction">Use keyboard arrow keys to move.</div>
+            <button id="pauseBtn" onclick="togglePause()" title="Pause/Play">
+                <img id="pauseIcon" src="icons/pause.svg" alt="Pause">
+            </button>
+        </div>
+
+        <canvas id="game"></canvas>
+
+        <div id="bottomBar">
+            <div class="panel">Score: <span id="scoreDisplay">0</span></div>
+            <div class="panel">Completed: <span id="percentDisplay">0.0%</span></div>
+            <div class="panel">Marbles: <span id="livesDisplay">4</span></div>
+            <button class="button" onclick="newGame()">New Game</button>
+            <button class="button" onclick="exitGame()">Exit</button>
+        </div>
+
+    </div>
+
+    <!-- High Scores Modal -->
+    <div class="modal" id="highScoresModal">
+        <div class="modal-window">
+            <div class="modal-title-bar">
+                <span>High Scores</span>
+                <div class="modal-close" onclick="closeModal('highScoresModal')">×</div>
+            </div>
+            <div class="modal-content">
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Levels<br>Complete</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoresTableBody">
+                        <!-- Populated by JavaScript (highscores.js) -->
+                    </tbody>
+                </table>
+                <div class="modal-buttons">
+                    <button class="button" onclick="closeModal('highScoresModal')">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-window">
+            <div class="modal-title-bar">
+                <span>About Lock Out</span>
+                <div class="modal-close" onclick="closeModal('aboutModal')">×</div>
+            </div>
+            <div class="modal-content">
+                <h3 style="margin-top: 0;">Lock Out</h3>
+                <p><strong>Version 1.0</strong></p>
+                <p>A classic area-capture game inspired by JezzBall.</p>
+                <p><strong>How to Play:</strong></p>
+                <ul style="text-align: left; margin-left: 20px;">
+                    <li>Use arrow keys to move your blue marble</li>
+                    <li>Capture 75% of the area to advance</li>
+                    <li>Avoid red marbles and the silver border marble</li>
+                    <li>Don't let enemies hit your trail!</li>
+                </ul>
+                <p style="margin-top: 15px;">&copy; 2026 Lock Out Game</p>
+                <div class="modal-buttons">
+                    <button class="button" onclick="closeModal('aboutModal')">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/globals.js"></script>
+    <script src="js/highscores.js"></script>
+    <script src="js/capture.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/game.js"></script>
+
+</body>
+
+</html>
